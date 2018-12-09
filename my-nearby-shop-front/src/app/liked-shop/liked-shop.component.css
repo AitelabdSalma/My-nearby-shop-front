@@ -1,0 +1,5 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+.image{
+    max-width: 150px;
+    max-height: 150px;
+}

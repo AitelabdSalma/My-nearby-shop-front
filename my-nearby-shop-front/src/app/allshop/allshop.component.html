@@ -1,0 +1,47 @@
+
+
+<app-header></app-header>
+<div class="row">
+  <div class="col-sm-2 col-md-1 affix-sidebar">
+   
+  </div>
+
+  <div class="col-sm-8 col-md-10">
+         
+      <div class="row">
+          <div class=" col-xs-4 col-sm-4 col-md-2 col-lg-2 ;" style="max-width: 150px; margin: 10px;border:  black;" *ngFor="let shop of nearbyshop| orderBy: key : reverse ; let i = index" >
+              
+      
+              <!-- Team member -->
+              
+              <div  style="width: 150px; ">
+                 
+                  
+                    <h3   style="padding-top: 5px; padding-left: 5px" >Shop {{ shop.shopName|uppercase }}</h3>
+                    <img style="padding:10px; " class="card-img-top image" src="../../assets/pic/X.jpg" alt="Card image cap">
+                    <br>
+                    <div>
+                        <button (click)="onDislike(i)"
+                        style="float: left; background-color: red;color: #ffffff;border:black ; margin-left: 5px;margin-right: 5px;" 
+                        class="btn btn-primary">
+                        Dislike</button>
+                        <button (click)="onLike(i)"
+                        style="float: left; background-color: green;color: #ffffff;border:black; margin-left: 5px;margin-right: 5px;" 
+                        class="btn btn-primary">
+                            Like</button>
+                    </div>
+                 
+              </div>
+      
+          </div>
+      
+      </div>
+                    
+     
+  </div>
+  <div class="col-sm-2 col-md-1 affix-sidebar">
+   
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,90 @@
+<div class="container test">
+  <div class="list-group" style="margin-top: 17%">
+    <div class="card">
+      <div *ngIf="success" class="alert alert-success" role="alert">
+        <strong>Success!</strong> Your account was created, Please login to your account
+      </div>
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        <strong>Erreur!</strong> You've already created an account with this email address !
+      </div>
+      <div class=" card-title text-center mb-4 mt-1  list-group-item">
+        <h2 class="card-title text-center mb-4 mt-1">Inscription</h2>
+
+      </div>
+
+      <!-- <h4 class="card-title text-center mb-4 mt-1" style="font-variant: petite-caps;">Inscription</h4> -->
+
+      <form  #frm="ngForm" (ngSubmit)="onRegister(frm)">
+        <!--  Form du Nom -->
+      <!--  <div *ngIf="success" style="margin-bottom:20px;">Your account was created, Please login to your account</div>
+        <div *ngIf="error" style="background-color:#FFC107;margin-bottom:20px;">You've already created an account with this email address !</div>-->
+
+        <div class="form-group list-group-item">
+          <div class="input-group">
+            <span class="input-group-addon basic"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" name="nameUser" [(ngModel)]="user.nom" #nameUser="ngModel" required pattern="^[a-zA-Zàâäéèêëçùûüôö]{2,}$" placeholder="Nom"/>
+          </div>
+          <div *ngIf="nameUser.touched">
+            <div *ngIf="nameUser.errors?.required" class="alert alert-danger">Nom est Obligatoire</div>
+            <div *ngIf="nameUser.errors?.pattern" class="alert alert-danger">Nom invalide</div>
+          </div>
+        </div>
+
+        <!-- Form du prenom -->
+        <div class="form-group list-group-item">
+          <div class="input-group">
+            <span class="input-group-addon basic"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" name="prenom" [(ngModel)]="user.prenom" #prenom="ngModel" required pattern="^[a-zA-Zàâäéèêëçùûüôö]{2,}$" placeholder="prénom" />
+          </div>
+          <div *ngIf="prenom.touched">
+            <div *ngIf="prenom.errors?.required" class="alert alert-danger">prénom est Obligatoire</div>
+            <div *ngIf="prenom.errors?.pattern" class="alert alert-danger">prénom invalide</div>
+          </div>
+        </div>
+
+        <!-- Form d'Email -->
+        <div class="form-group list-group-item">
+          <div class="input-group ">
+            <span class="input-group-addon basic"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="email" class="form-control"  name="emailUser" [(ngModel)]="user.email" #emailUser="ngModel" required pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9]+\.[A-Za-z]{2,4}$" placeholder="prenom"  placeholder="Email" />
+          </div>
+          <div *ngIf="emailUser.touched">
+            <div *ngIf="emailUser.errors?.required" class="alert alert-danger"> Email est Obligatoire</div>
+            <div *ngIf="emailUser.errors?.pattern" class="alert alert-danger">Email invalide</div>
+          </div>
+        </div>
+
+        <!-- Form de mot de passe -->
+        <div class="form-group list-group-item">
+          <div class="input-group">
+            <span class="input-group-addon basic"><span class="glyphicon glyphicon-lock"></span></span>
+            <input type="password" class="form-control" name="passwordUser" [(ngModel)]="user.motDePasse" #passwordUser="ngModel" required  placeholder="******"/>
+          </div>
+          <div *ngIf="passwordUser.touched">
+            <div *ngIf="passwordUser.errors?.required" class="alert alert-danger"> Mot de Passe est Obligatoire</div>
+          </div>
+        </div>
+
+        <!-- Form de confirmer le mot de passe -->
+        <div class="form-group list-group-item">
+          <div class="input-group">
+            <span class="input-group-addon basic"><span class="glyphicon glyphicon-lock"></span></span>
+            <input type="password" appConfirmEqualValidator="passwordUser" class="form-control"  name="cpasswordUser" ngModel #cpasswordUser="ngModel" required placeholder="******"/>
+          </div>
+          <div *ngIf="cpasswordUser.touched">
+            <div *ngIf="cpasswordUser.errors?.required" class="alert alert-danger"> Mot de Passe est Obligatoire </div>
+            <div *ngIf="cpasswordUser.errors?.notEqual && !cpasswordUser.errors?.required" class="alert alert-danger"> Les Mots de passe ne correspondent pas.Veuillez réessayer </div>
+          </div>
+        </div>
+        <div class="form-group list-group-item">
+          <button type="submit" name="button" class="btn btn-primary btn-block" [disabled]="frm.invalid">Inscription</button>
+          <p class="text-center"><a routerLink="/login" class="btn">Login</a></p>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+<!--container end.//-->
